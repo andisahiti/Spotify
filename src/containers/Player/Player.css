@@ -1,0 +1,4 @@
+.player__body {
+  /* osht row by default */
+  display: flex;
+}
