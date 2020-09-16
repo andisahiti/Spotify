@@ -13,14 +13,13 @@ const Main = (props) => {
             <Header spotify={props.spotify} />
 
             <div className="body__info">
-                <img src={props.randomPlaylist?.images[0].url} alt="" />
+                <img src={props.playlistClicked?.images[0].url} alt="" />
                 <div className="body__infoText">
                     <strong>PLAYLIST</strong>
-                    <h2>{props.randomPlaylist?.name}</h2>
-                    <p>{props.randomPlaylist?.description}</p>
+                    <h2>{props.playlistClicked?.name}</h2>
+                    <p>{props.playlistClicked?.description}</p>
                 </div>
             </div>
-
             <div className="body__songs">
                 <div className="body__icons">
                     <PlayCircleFilledIcon
@@ -30,9 +29,9 @@ const Main = (props) => {
                     <FavoriteIcon fontSize="large" />
                     <MoreHorizIcon />
                 </div>
-                {props.randomPlaylist?.tracks.items.map(item => {
+                {props.playlistClicked?.tracks.items.map((item, index) => {
                     return (
-                        <SongRow track={item.track}></SongRow>
+                        <SongRow key={index} track={item.track}></SongRow>
                     )
                 })}
 
@@ -43,7 +42,7 @@ const Main = (props) => {
 
 const mapStateToProps = state => {
     return {
-        randomPlaylist: state.randomPlaylist
+        playlistClicked: state.playlistClicked
     }
 }
 export default connect(mapStateToProps)(Main);

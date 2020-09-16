@@ -4,8 +4,10 @@ import SidebarOption from "./SidebarOption/SidebarOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
+import * as actions from '../../store/action/index'
 import { connect } from "react-redux";
-const Sidebar = (props) => {
+const Sidebar = React.memo((props) => {
+
     return (
         <div className="sidebar">
             <img
@@ -19,18 +21,26 @@ const Sidebar = (props) => {
             <br />
             <strong className="sidebar__title">PLAYLISTS</strong>
             <hr />
-            {props.playlists.map((playlist) => {
+            {props.playlists.map((playlist, index) => {
+
                 return (
-                    <SidebarOption title={playlist.name} />
+                    <SidebarOption clicked={() => {
+                        props.getId(playlist.id)
+                    }} key={playlist.id} title={playlist.name} />
                 )
             })}
         </div>
     );
-}
+})
 const mapStateToProps = state => {
     return {
         playlists: state.playlists
     }
 }
+const mapDispatchToProps = dispatch => {
+    return {
+        getId: (id) => dispatch(actions.getClickedPlaylist(id))
+    }
+}
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

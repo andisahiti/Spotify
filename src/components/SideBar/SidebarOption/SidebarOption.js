@@ -1,8 +1,8 @@
 import React from 'react'
 import './SidebarOption.css'
-const SidebarOption = ({ title, Icon }) => {
+const SidebarOption = ({ title, Icon, clicked }) => {
     return (
-        <div className='sidebarOption'>
+        <div onClick={clicked} className='sidebarOption'>
             {Icon && <Icon className='sidebarOption__icon'></Icon>}
             {Icon ? <h4>{title}</h4> : <p>{title}</p>}
         </div>

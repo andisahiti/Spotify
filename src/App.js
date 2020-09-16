@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { connect } from 'react-redux'
 import Player from "./containers/Player/Player";
@@ -9,7 +9,6 @@ import * as actions from './store/action/index'
 const spotify = new SpotifyWebApi();
 
 const App = (props) => {
-  const [id, setId] = useState('');
   useEffect(() => {
     // Set token
     const hash = getTokenFromUrl();
@@ -25,19 +24,26 @@ const App = (props) => {
 
       spotify.getMe().then((user) => {
         props.setUser(user)
+      }).catch(error => {
+        console.log(error)
       });
 
       spotify.getUserPlaylists().then((playlists) => {
         props.setPlayLists(playlists)
+      }).catch(error => {
+        console.log(error)
       });
-
-
-      spotify.getPlaylist("2m170gPQueNItSIGfqfhpJ").then(response => {
-        props.setRandomPlayList(response)
-      })
-
     }
-  }, []);
+  }, [props]);
+
+
+  useEffect(() => {
+    spotify.getPlaylist(props.id).then(response => {
+      props.setPlayList(response)
+    }).catch(error => {
+    })
+
+  }, [props])
 
 
   return (
@@ -53,7 +59,8 @@ const mapStateToProps = state => {
   return {
     token: state.token,
     playlists: state.playlists,
-    id: state.id
+    id: state.id,
+    track: state.track
   }
 }
 
@@ -62,7 +69,7 @@ const mapDispatchToProps = dispatch => {
     setToken: (token) => dispatch(actions.setToken(token)),
     setUser: (user) => dispatch(actions.setUser(user)),
     setPlayLists: (playlists) => dispatch(actions.setPlaylists(playlists)),
-    setRandomPlayList: (playList) => dispatch(actions.setRandomPlaylist(playList))
+    setPlayList: (playlist) => dispatch(actions.setPlaylist(playlist))
   }
 }
 

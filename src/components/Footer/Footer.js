@@ -1,35 +1,21 @@
 import React from 'react'
 import './Footer.css'
 import { connect } from 'react-redux'
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import ShuffleIcon from "@material-ui/icons/Shuffle";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
-import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
-import { Grid, Slider } from "@material-ui/core";
 import * as actions from '../../store/action/index'
-const Footer = () => {
-    const item = {
-        name: 'andi',
-        artists: {
-            name: 'sahiti'
-        }
-    }
+const Footer = (props) => {
+
     return (
         <div className="footer">
             <div className="footer__left">
-                {/* <img
+                <img
                     className="footer__albumLogo"
-                    src={item?.album.images[0].url}
-                    alt={item?.name}
-                /> */}
+                    src={props.track?.album.images[0].url}
+                    alt=''
+                />
                 {true ? (
                     <div className="footer__songInfo">
-                        <h4>{item.name}</h4>
-                        {/* <p>{item.artists.map((artist) => artist.name).join(", ")}</p> */}
+                        <h4>{props.track?.name}</h4>
+                        <p>{props.track?.artists.map((artist) => artist.name).join(", ")}</p>
                     </div>
                 ) : (
                         <div className="footer__songInfo">
@@ -40,43 +26,21 @@ const Footer = () => {
             </div>
 
             <div className="footer__center">
-                <ShuffleIcon className="footer__green" />
-                <SkipPreviousIcon className="footer__icon" />
-                {true ? (
-                    <PauseCircleOutlineIcon
-                        fontSize="large"
-                        className="footer__icon"
-                    />
-                ) : (
-                        <PlayCircleOutlineIcon
+                {props.song}
+            </div>
 
-                            fontSize="large"
-                            className="footer__icon"
-                        />
-                    )}
-                <SkipNextIcon className="footer__icon" />
-                <RepeatIcon className="footer__green" />
-            </div>
-            <div className="footer__right">
-                <Grid container spacing={2}>
-                    <Grid item>
-                        <PlaylistPlayIcon />
-                    </Grid>
-                    <Grid item>
-                        <VolumeDownIcon />
-                    </Grid>
-                    <Grid item xs>
-                        <Slider aria-labelledby="continuous-slider" />
-                    </Grid>
-                </Grid>
-            </div>
+
+
         </div>
     );
 }
 
 const mapStateToProps = state => {
     return {
-        token: state.token
+        token: state.token,
+        track: state.track,
+        url: state.url,
+        song: state.song
     }
 }
 

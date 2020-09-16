@@ -1,12 +1,13 @@
 .sidebar {
-  height: 100vh;
+  min-height: 88vh;
   /* i tregon qiti sidebari qe ki me marr 20% te view widthit gjith */
   flex: 0.2;
   padding-right: 10px;
   padding-left: 10px;
-  min-width: 230px;
+  min-width: 150px;
   color: white;
   background-color: #040404;
+  overflow-y: overlay;
 }
 .sidebar > hr {
   border: 1px solid #282828;

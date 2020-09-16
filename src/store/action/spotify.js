@@ -19,10 +19,10 @@ export const setItem = (item) => {
         item: item
     }
 }
-export const setRandomPlaylist = (randomPlaylist) => {
+export const setPlaylist = (playlist) => {
     return {
-        type: actionTypes.SET_RANDOM_PLAYLIST,
-        randomPlaylist: randomPlaylist
+        type: actionTypes.SET_PLAYLIST,
+        playlist: playlist
     }
 }
 export const setTopArtists = (top_artists) => {
@@ -47,5 +47,23 @@ export const setPlaylists = (playlists) => {
     return {
         type: actionTypes.SET_PLAYLISTS,
         playlists: playlists
+    }
+}
+export const getClickedPlaylist = (id) => {
+    return {
+        type: actionTypes.PLAYLIST_ID,
+        id: id
+    }
+}
+export const getSong = (track) => {
+    return {
+        type: actionTypes.GET_SONG,
+        track: track
+    }
+}
+export const getSongUrl = (url) => {
+    return {
+        type: actionTypes.GET_SONG_URL,
+        url: url
     }
 }

@@ -4,6 +4,7 @@
 //endpointi ku kena me qu userin per me login mansej kur tkryhet loginin aj vjen nappin ton apet
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 //kur tkthehet useri vjen nqit link
+// const redirectUri = "http://localhost:3000/";
 const redirectUri = "https://spotify-56d9a.web.app/";
 
 

@@ -1,1 +1,1 @@
-export { setToken, setRandomPlaylist, setItem, setPlaying, setPlaylists, setSpotify, setTopArtists, setUser } from './spotify'
+export { setToken, setPlaylist, setItem, setPlaying, setPlaylists, setSpotify, setTopArtists, setUser, getClickedPlaylist, getSong, getSongUrl } from './spotify'

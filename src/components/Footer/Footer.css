@@ -1,4 +1,5 @@
 .footer {
+  border: none;
   /* nuk livrit kurr */
   position: fixed;
   display: flex;
@@ -11,10 +12,8 @@
   background-color: #282828;
 }
 
-.footer__right * .MuiSlider-root {
-  color: green;
-}
 .footer__left {
+  border: none;
   display: flex;
   align-items: center;
   color: white;
@@ -22,34 +21,12 @@
   flex: 0.3;
 }
 
-.footer__green {
-  color: #1ed15e;
-}
-
 .footer__center {
-  flex: 0.4;
-  max-width: 300px;
-  /* 100px left and right */
-  padding: 0 100px;
+  border: none;
+  padding-right: 50px;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.footer__icon:hover,
-.footer__green:hover {
-  transition: transform 0.2s ease-in-out;
-  transform: scale(1.2) !important;
-}
-
-.footer__right {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  flex: 0.3;
-  padding-right: 40px;
 }
 
 .footer__albumLogo {
@@ -65,4 +42,19 @@
 
 .footer__songInfo > p {
   font-size: 12px;
+}
+
+audio:hover,
+audio:focus,
+audio:active {
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
+  transform: scale(1.02);
+}
+audio {
+  min-width: 50px;
+  width: 400px;
+  border-radius: 40px;
+  border: 5px solid black;
+  transition: all 0.5s linear;
+  box-shadow: 0px 0px 2px 2px rgb(91, 87, 115);
 }
