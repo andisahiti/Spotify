@@ -22,8 +22,10 @@
 }
 
 .footer__center {
+  min-width: 80px;
   border: none;
   padding-right: 50px;
+  padding-left: 30px;
   color: white;
   display: flex;
   align-items: center;
@@ -51,8 +53,8 @@ audio:active {
   transform: scale(1.02);
 }
 audio {
-  min-width: 50px;
   width: 400px;
+  min-width: 80px;
   border-radius: 40px;
   border: 5px solid black;
   transition: all 0.5s linear;
